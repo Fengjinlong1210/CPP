@@ -1,0 +1,37 @@
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+//整体思想：先将数组进行排序，用最小的和最大的两个组成一组
+//剩下的仍然按这个思想组队，取出中间的数相加就是结果
+
+int main() 
+{
+    int n = 0;
+    while(cin >> n)
+    {
+        vector<int> vct;
+        int i = 0;
+        long long sum = 0;
+        vct.resize(3 * n); //为vector开辟足够的空间
+        for(i = 0; i < 3*n; ++i)
+        {
+            cin >> vct[i]; //获取输入到vct
+        }
+        std::sort(vct.begin(), vct.end());//排序
+
+        for(i = 0; i < n; ++i)
+        {
+            sum += vct[3*n - 2*(i + 1)];
+        }
+        cout << sum << endl; 
+    }
+}
+
+
+
+
+
+
+// 64 位输出请用 printf("%lld")
