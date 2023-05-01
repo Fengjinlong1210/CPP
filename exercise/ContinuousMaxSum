@@ -1,0 +1,32 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int getmax(int x, int y)
+{
+    return x > y ? x : y;
+}
+
+int main() {
+    int n = 0;
+    cin >> n;
+    vector<int> v(n);
+    for(auto& e : v)
+    {
+        cin >> e;
+    }
+    int sum = v[0];
+    int max = v[0];
+    for(int i = 1; i < v.size(); ++i)
+    {
+        sum = getmax(sum + v[i], v[i]);
+        if(sum > max)
+        {
+            max = sum;
+        }
+    }
+
+    cout << max << endl;
+
+
+}
