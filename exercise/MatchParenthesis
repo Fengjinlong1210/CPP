@@ -1,0 +1,62 @@
+class Parenthesis
+{
+private:
+    stack<char> _st;
+public:
+    bool isParenthesis(char ch)
+    {
+        if(ch == '(' || ch == ')' || ch == '{' ||ch == '}' || ch == '[' || ch == ']')
+        {
+            return true;
+        }
+        return false;
+    }
+
+    char match(char ch)
+    {
+        if(ch == '(')
+            return ')';
+        else if(ch == '{')
+            return '}';
+        else if(ch == '[')
+            return ']';
+        else
+            return '0';
+    }
+
+    bool chkParenthesis(string A, int n) 
+    {
+        if(n % 2 == 1)
+        {
+            return false;
+        }
+        for(auto& e : A)
+        {
+            //如果不是括号，直接返回false
+            if(!isParenthesis(e))
+            {
+                return false;
+            }
+            if(e == '(' || e == '{' || e == '[')
+            {
+                _st.push(e);
+            }
+            else 
+            {
+                if(_st.empty())
+                    return false;
+                char tmp = match(_st.top());
+                _st.pop();
+                if(tmp != e)
+                {
+                    return false;
+                }
+            }
+        }
+        if(!_st.empty())
+        {
+            return false;
+        }
+        return true;
+    }
+};

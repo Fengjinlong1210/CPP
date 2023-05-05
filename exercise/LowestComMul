@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+int main() 
+{
+    long long a = 0;
+    long long b = 0;
+    long long num = 0;
+    cin >> a >> b;
+    long long aa = a;
+    long long bb = b;
+    //计算最大公因数
+    if(aa > bb)
+    {
+        bb = a;
+        aa = b;
+    }
+    while(aa != 0)
+    {
+        //16 6
+        //16/6=2 ... 4
+        int mol = bb % aa;
+        bb = aa;
+        aa = mol;
+    }
+    cout << a * b / bb;
+}
